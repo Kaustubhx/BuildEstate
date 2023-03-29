@@ -3,7 +3,7 @@ import React from 'react'
 
 function FilteredPropertyCard() {
     return (
-        <div className='w-full flex items-center'>
+        <div className='w-full flex items-center cursor-pointer'>
             <div className='p-2 bg-white rounded-2xl'>
                 <div className=''>
                     <div className='relative h-48 w-56'>

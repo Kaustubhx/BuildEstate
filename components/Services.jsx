@@ -13,10 +13,10 @@ function Services() {
     return (
         <div className='py-20'>
             <div className='border-b-2 border-gray-300'>
-                <div className='max-w-7xl mx-auto flex flex-col items-center justify-center overflow-scroll overflow-y-hidden'>
+                <div className='max-w-7xl mx-auto flex flex-col items-center justify-center'>
                     <p className='text-lg font-semibold text-gray-500'>Trusted by 20,000+ companies</p>
 
-                    <div className='flex items-start justify-between w-full px-5 overflow-scroll overflow-y-hidden'>
+                    <div className='flex items-start justify-between w-full px-5'>
                         <div className='relative h-28 w-40' >
                             <Image className='max-w-full h-auto object-contain' src="/google-trusted.png" alt="" fill />
                         </div>
@@ -40,10 +40,6 @@ function Services() {
                             <p className='text-3xl font-semibold text-gray-500 mb-4'>What We do</p>
                             <p className='text-gray-500 font-medium'>Full-Service Agents, Modern Technology</p>
                         </div>
-
-                        <button className='mt-4 lg:mt-0 bg-indigo-300/50 text-indigo-600 py-3 px-5 rounded-xl font-semibold'>
-                            See More
-                        </button>
                     </div>
 
                     <div className='max-w-7xl mx-auto lg:-mb-20 grid gap-5 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 justify-items-center mt-7'>

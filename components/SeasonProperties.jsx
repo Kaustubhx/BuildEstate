@@ -1,8 +1,8 @@
 import Image from 'next/image'
 import React from 'react'
-import PropertyCategoryCard from './PropertyCategoryCard';
+import SeasonPropertyCard from './SeasonPropertyCard';
 
-function PropertyCategories() {
+function SeasonProperties() {
 
     const propertyCategories = [1, 2, 3, 4];
 
@@ -14,7 +14,7 @@ function PropertyCategories() {
 
                 <div className='flex space-x-5 w-full pt-10 overflow-scroll overflow-y-hidden'>
                     {propertyCategories.map((category, i) => (
-                        <PropertyCategoryCard key={i + 1} />
+                        <SeasonPropertyCard key={i + 1} />
                     ))}
                 </div>
             </div>
@@ -22,4 +22,4 @@ function PropertyCategories() {
     )
 }
 
-export default PropertyCategories
+export default SeasonProperties

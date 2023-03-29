@@ -3,15 +3,16 @@ import { Inter } from 'next/font/google'
 import Header from '@/components/Header'
 import Banner from '@/components/Banner'
 import Services from '@/components/Services'
-import PropertyCategories from '@/components/PropertyCategories'
-import FilteredProperties from '@/components/FilteredProperties' 
+import SeasonProperties from '@/components/SeasonProperties'
+import FilteredProperties from '@/components/FilteredProperties'
 import Footer from '@/components/Footer'
+
 
 const inter = Inter({ subsets: ['latin'] })
 
 export default function Home() {
   return (
-    <>
+    <div>
       <Head>
         <title>Build Estate</title>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -24,11 +25,11 @@ export default function Home() {
 
       <Services />
 
-      <PropertyCategories />
+      <SeasonProperties />
 
       <FilteredProperties />
 
       <Footer />
-    </>
+    </div>
   )
 }

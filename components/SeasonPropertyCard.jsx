@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import React from 'react'
 
-function PropertyCategoryCard() {
+function SeasonPropertyCard() {
     return (
         <article className='text-center flex flex-col items-center w-full'>
             <div className='max-w-xs'>
@@ -18,4 +18,4 @@ function PropertyCategoryCard() {
     )
 }
 
-export default PropertyCategoryCard
+export default SeasonPropertyCard
