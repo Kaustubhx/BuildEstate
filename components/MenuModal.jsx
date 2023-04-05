@@ -1,12 +1,30 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { HomeIcon, PhoneIcon, MegaphoneIcon, ExclamationCircleIcon } from '@heroicons/react/24/outline'
 import { useRouter } from 'next/router'
-import { useSession, signIn, signOut } from "next-auth/react";
 import { ArrowLeftOnRectangleIcon, HeartIcon, UserIcon } from '@heroicons/react/24/outline'
 import { AiOutlineHistory } from 'react-icons/ai'
+import { auth } from '@/firebase'
+import { login, logout, selectUser } from '@/slices/userSlice'
+import { useDispatch, useSelector } from 'react-redux'
 
 function MenuModal({ menu }) {
-    const { data: session } = useSession();
+    const user = useSelector(selectUser);
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        const unsubscribe = auth.onAuthStateChanged((userAuth) => {
+            if (userAuth) {
+                dispatch(login({
+                    uid: userAuth.uid,
+                    email: userAuth.email,
+                    name: userAuth.displayName,
+                }))
+            } else {
+                dispatch(logout())
+            }
+        });
+        return unsubscribe;
+    }, [])
 
     const router = useRouter();
 
@@ -31,9 +49,9 @@ function MenuModal({ menu }) {
                 </li>
             </ul>
 
-            {session ?
+            {user ?
                 <div className='mt-7'>
-                    <p className='text-gray-500 font-semibold p-2'>Hello, <span className='text-indigo-600'>{session.user.name}</span></p>
+                    <p className='text-gray-500 font-semibold p-2'>Hello, <span className='text-indigo-600'>{user.name}</span></p>
 
                     <div className='divide-y divide-gray-500 border-gray-500'>
                         <p
@@ -52,7 +70,7 @@ function MenuModal({ menu }) {
                             Liked
                         </p>
                         <p
-                            onClick={signOut}
+                            onClick={() => auth.signOut()}
                             className='p-4 cursor-pointer text-gray-500 font-semibold flex items-center text-sm hover:text-indigo-500 transition-all duration-300 ease-in-out'>
                             <ArrowLeftOnRectangleIcon className='h-5 w-5 mr-3' />
                             Logout

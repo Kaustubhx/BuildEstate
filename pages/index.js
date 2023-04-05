@@ -6,6 +6,7 @@ import Services from '@/components/Services'
 import SeasonProperties from '@/components/SeasonProperties'
 import FilteredProperties from '@/components/FilteredProperties'
 import Footer from '@/components/Footer'
+import { fetchProperties } from '@/utils/fetchProperties'
 
 
 const inter = Inter({ subsets: ['latin'] })
@@ -33,3 +34,4 @@ export default function Home() {
     </div>
   )
 }
+

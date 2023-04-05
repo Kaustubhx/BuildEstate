@@ -1,15 +1,32 @@
-import Image from 'next/image'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { BoltIcon, ChevronDownIcon, MagnifyingGlassIcon } from '@heroicons/react/24/solid'
 import { ArrowLeftOnRectangleIcon, HeartIcon, UserIcon } from '@heroicons/react/24/outline'
 import { AiOutlineHistory } from "react-icons/ai";
 import MenuModal from './MenuModal'
 import { useRouter } from "next/router";
-import { useSession, signIn, signOut } from "next-auth/react";
+import { useDispatch, useSelector } from 'react-redux';
+import { login, logout, selectUser } from '@/slices/userSlice';
+import { auth } from '@/firebase';
 
 function Header() {
-    const { data: session } = useSession();
+    const user = useSelector(selectUser)
+    const dispatch = useDispatch();
     const router = useRouter();
+
+    useEffect(() => {
+        const unsubscribe = auth.onAuthStateChanged((userAuth) => {
+            if (userAuth) {
+                dispatch(login({
+                    uid: userAuth.uid,
+                    email: userAuth.email,
+                    name: userAuth.displayName,
+                }))
+            } else {
+                dispatch(logout())
+            }
+        });
+        return unsubscribe;
+    }, [])
 
     const [userMenu, openUserMenu] = useState();
     const toggelUserMenu = () => {
@@ -22,6 +39,11 @@ function Header() {
         openMenu(!menu);
     }
 
+    const [searchQuery, setSearchQuery] = useState("");
+    const onSearch = (event) => {
+        event.preventDefault();
+        router.push(`/search?q=${searchQuery}`)
+    };
 
     return (
         <header className='border border-b-gray-300'>
@@ -51,10 +73,17 @@ function Header() {
                 </div>
 
                 {router.pathname === '/' ? "" :
-                    <div className='hidden relative lg:flex items-center'>
-                        <input className='bg-gray-300 px-6 py-2 rounded-xl' type="text" placeholder='Search Location' />
+                    <form
+                        onSubmit={onSearch}
+                        className='hidden relative lg:flex items-center'
+                    >
+                        <input
+                            value={searchQuery}
+                            onChange={(event) => setSearchQuery(event.target.value)}
+                            className='bg-gray-300 px-6 py-2 rounded-xl' type="text" placeholder='Search Location'
+                        />
                         <MagnifyingGlassIcon className='h-6 w-6 absolute right-2 text-indigo-600' />
-                    </div>
+                    </form>
                 }
 
                 <nav className='hidden lg:inline-flex'>
@@ -66,10 +95,10 @@ function Header() {
                     </ul>
                 </nav>
 
-                {session ?
+                {user ?
                     <div className='relative' onClick={toggelUserMenu}>
                         <p className='hidden lg:flex flex-col cursor-pointer text-gray-500 hover:underline decoration-indigo-600'>
-                            <span className='text-xs font-semibold'>Hello, <span className='text-indigo-600'>{session.user.name}</span></span>
+                            <span className='text-xs font-semibold'>Hello, <span className='text-indigo-600'>{user.name}</span></span>
                             <span className='flex items-center font-semibold'>
                                 Account & List
                                 <ChevronDownIcon className='h-4 w-4 ml-3' />
@@ -92,7 +121,7 @@ function Header() {
                                 <HeartIcon className='h-6 w-6 ml-2' />
                             </p>
                             <p
-                                onClick={signOut}
+                                onClick={() => auth.signOut()}
                                 className='p-1 cursor-pointer text-gray-500 font-semibold flex items-center justify-between text-sm hover:text-indigo-500 transition-all duration-300 ease-in-out'>
                                 Logout
                                 <ArrowLeftOnRectangleIcon className='h-5 w-5 ml-2' />
