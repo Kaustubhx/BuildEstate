@@ -16,6 +16,13 @@
     }
 }
 
+@layer components {
+
+    .feature_head {
+        @apply bg-indigo-700 px-4 py-3 w-full text-white rounded-t-lg
+    }
+}
+
 .banner {
     background-image: url("/bannerImage.jpg");
     background-size: cover;

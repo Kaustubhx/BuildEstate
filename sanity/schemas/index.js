@@ -1,6 +1,5 @@
-import blockContent from './blockContent'
-import category from './category'
-import post from './property'
-import propertyCard from './propertyCard'
+import suitableProp from './suitableProp'
+import filteredProperty from './filteredProperty'
+import properties from './properties'
 
-export const schemaTypes = [post, propertyCard, category, blockContent]
+export const schemaTypes = [filteredProperty, suitableProp, properties]

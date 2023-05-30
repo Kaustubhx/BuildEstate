@@ -8,8 +8,6 @@ import { UsersIcon } from '@heroicons/react/24/solid'
 
 function Services() {
 
-    const services = [1, 2, 3, 4]
-
     return (
         <div className='py-20'>
             <div className='border-b-2 border-gray-300'>
@@ -22,11 +20,15 @@ function Services() {
                         </div>
 
                         <div className='relative h-28 w-40' >
-                            <Image className='max-w-full h-auto object-contain' src="/google-trusted.png" alt="" fill />
+                            <Image className='max-w-full h-auto object-contain' src="/amazon-trusted.png" alt="" fill />
                         </div>
 
                         <div className='relative h-28 w-40' >
-                            <Image className='max-w-full h-auto object-contain' src="/google-trusted.png" alt="" fill />
+                            <Image className='max-w-full h-auto object-contain' src="/booking.com-logo.png" alt="" fill />
+                        </div>
+
+                        <div className='relative h-28 w-40' >
+                            <Image className='max-w-full h-auto object-contain grayscale' src="/microsoft-logo.png" alt="" fill />
                         </div>
                     </div>
                 </div>
@@ -38,7 +40,7 @@ function Services() {
                         <div className='flex flex-col items-start'>
                             <p className='text-indigo-700 text-lg font-semibold uppercase mb-1'>Ehm. So?</p>
                             <p className='text-3xl font-semibold text-gray-500 mb-4'>What We do</p>
-                            <p className='text-gray-500 font-medium'>Full-Service Agents, Modern Technology</p>
+                            <p className='text-gray-500/70 font-medium'>Full-Service Agents, Modern Technology</p>
                         </div>
                     </div>
 
@@ -50,7 +52,7 @@ function Services() {
                                     <ChatBubbleBottomCenterTextIcon className='h-7 w-7 text-indigo-700' />
                                 </div>
                                 <h3 className='text-2xl font-semibold mb-2 text-gray-600'>Communication</h3>
-                                <p className='w-64 text-gray-500'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur mollitia amet, itaque.</p>
+                                <p className='w-64 text-gray-500'>Single point of contact, in sync with the tools you use. We speak you language.</p>
                             </div>
                         </div>
 
@@ -60,7 +62,7 @@ function Services() {
                                     <ShieldCheckIcon className='h-7 w-7 text-indigo-700' />
                                 </div>
                                 <h3 className='text-2xl font-semibold mb-2 text-gray-600'>Reliability</h3>
-                                <p className='w-64 text-gray-500'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur mollitia amet, itaque.</p>
+                                <p className='w-64 text-gray-500'>We keep our promises, provide upfront timelines and bring predictability.</p>
                             </div>
                         </div>
 
@@ -70,7 +72,7 @@ function Services() {
                                     <SparklesIcon className='h-7 w-7 text-indigo-700' />
                                 </div>
                                 <h3 className='text-2xl font-semibold mb-2 text-gray-600'>Quality First</h3>
-                                <p className='w-64 text-gray-500'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur mollitia amet, itaque.</p>
+                                <p className='w-64 text-gray-500'>Quality first. All projects are backed by our fantastic supports & 100% satisfaction gurantee.</p>
                             </div>
                         </div>
 
@@ -80,10 +82,9 @@ function Services() {
                                     <UsersIcon className='h-7 w-7 text-indigo-700' />
                                 </div>
                                 <h3 className='text-2xl font-semibold mb-2 text-gray-600'>Families</h3>
-                                <p className='w-64 text-gray-500'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur mollitia amet, itaque.</p>
+                                <p className='w-64 text-gray-500'>Rent a beautiful house for your family. Choose from flats in societies and individual apartments.</p>
                             </div>
                         </div>
-
                     </div>
                 </div>
             </div>

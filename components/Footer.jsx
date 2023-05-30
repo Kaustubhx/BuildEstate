@@ -16,8 +16,8 @@ function Footer() {
                             <BoltIcon className='h-6 w-6 lg:h-8 lg:w-8 text-indigo-100' />
                         </div>
                         <p className='text-2xl font-semibold'>
-                            <span className='text-indigo-700'>Build</span>
-                            Estate
+                            <span className='text-indigo-700'>Space</span>
+                            Perfect
                         </p>
                     </div>
                     <p className='text-gray-500 font-semibold'>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laborum veritatis.</p>

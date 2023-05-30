@@ -6,14 +6,14 @@ import Head from 'next/head'
 import { useRouter } from 'next/router'
 import React from 'react'
 
-function Search({ fakeProperties }) {
+function Results({ properties }) {
     const router = useRouter();
-    const location = router.query.q
+    const location = router.query.search_query
 
     return (
         <div className=''>
             <Head>
-                <title>Build Estate</title>
+                <title>Space Perfect</title>
                 <meta name="viewport" content="width=device-width, initial-scale=1" />
                 <link rel="icon" href="/favicon.ico" />
             </Head>
@@ -41,10 +41,11 @@ function Search({ fakeProperties }) {
                             </div>
                         </div>
                     </div>
-                    <div className='lg:flex flex-col grid gap-5 md:grid-cols-2 mt-8 lg:mt-0 flex-grow mr-5'>
-                        {fakeProperties?.map((fakeproperty) => (
-                            <div key={fakeproperty.id} onClick={() => router.push(`property/${fakeproperty.id}`)}>
-                                <SearchPropetyCard fakeproperty={fakeproperty} />
+
+                    <div className='lg:flex flex-col grid gap-5 md:grid-cols-2 mt-8 lg:mt-0 flex-grow lg:mr-5'>
+                        {properties?.map((properties) => (
+                            <div key={properties.id}>
+                                <SearchPropetyCard properties={properties} />
                             </div>
                         ))}
                     </div>
@@ -54,14 +55,14 @@ function Search({ fakeProperties }) {
     )
 }
 
-export default Search
+export default Results
 
 export const getServerSideProps = async () => {
-    const fakeProperties = await fetchProperties();
+    const properties = await fetchProperties();
 
     return {
         props: {
-            fakeProperties,
+            properties,
         }
     }
 }

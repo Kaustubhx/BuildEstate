@@ -29,7 +29,7 @@ function MenuModal({ menu }) {
     const router = useRouter();
 
     return (
-        <nav className={`absolute lg:hidden bg-white top-[72px] h-screen left-0 w-72 z-40 -translate-x-80 transition-all duration-500 ease-in-out ${menu ? 'translate-x-0' : ''}`}>
+        <nav className={`absolute lg:hidden bg-white top-14 h-screen left-0 w-72 z-40 -translate-x-80 transition-all duration-500 ease-in-out ${menu ? 'translate-x-0' : ''}`}>
             <ul className='text-center divide-y divide-gray-500 border-b border-gray-500'>
                 <li onClick={() => router.push('/')} className='text-gray-500 font-semibold p-4 flex items-center justify-start'>
                     <HomeIcon className='h-5 w-5 mr-3' />

@@ -1,6 +1,6 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
 import { useRouter } from 'next/router';
-import { MagnifyingGlassIcon } from '@heroicons/react/24/outline'
+import { MagnifyingGlassIcon } from '@heroicons/react/24/outline';
 
 function Banner() {
     const router = useRouter();
@@ -8,7 +8,7 @@ function Banner() {
 
     const onSearch = (event) => {
         event.preventDefault();
-        router.push(`/search?q=${searchQuery}`)
+        router.push(`/results?search_query=${searchQuery}`)
     };
 
     return (

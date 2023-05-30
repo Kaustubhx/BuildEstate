@@ -3,19 +3,20 @@ import { Inter } from 'next/font/google'
 import Header from '@/components/Header'
 import Banner from '@/components/Banner'
 import Services from '@/components/Services'
-import SeasonProperties from '@/components/SeasonProperties'
+import SuitableProperties from '@/components/SuitableProperties'
 import FilteredProperties from '@/components/FilteredProperties'
 import Footer from '@/components/Footer'
-import { fetchProperties } from '@/utils/fetchProperties'
+import { fetchSuitableProperties } from '@/utils/fetchSuitableProperties'
+import { fetchFilteredProperties } from '@/utils/fetchFilteredProperties'
 
 
 const inter = Inter({ subsets: ['latin'] })
 
-export default function Home() {
+export default function Home({ suitableProperties, filteredProperties }) {
   return (
-    <div>
+    <div className=''>
       <Head>
-        <title>Build Estate</title>
+        <title>Space Perfect</title>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
@@ -26,12 +27,24 @@ export default function Home() {
 
       <Services />
 
-      <SeasonProperties />
+      <SuitableProperties properties={suitableProperties} />
 
-      <FilteredProperties />
+      <FilteredProperties properties={filteredProperties} />
 
       <Footer />
     </div>
   )
+}
+
+export const getServerSideProps = async () => {
+  const suitableProperties = await fetchSuitableProperties();
+  const filteredProperties = await fetchFilteredProperties();
+
+  return {
+    props: {
+      suitableProperties,
+      filteredProperties,
+    }
+  }
 }
 
